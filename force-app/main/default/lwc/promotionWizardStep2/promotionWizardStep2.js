@@ -55,7 +55,7 @@ export default class PromotionWizardStep2 extends LightningElement {
             this.locator = result.locator;
 
             // Map products with selection status and discount from our map
-            this.products = result.records.map(record => {
+            this.products = result.records ? result.records.map(record => {
                 const savedProduct = this.selectedProductsMap.get(record.Id);
                 const isSelected = this.selectedProductsMap.has(record.Id);
                 return {
@@ -66,7 +66,7 @@ export default class PromotionWizardStep2 extends LightningElement {
                     isDisabled: !isSelected, // For disabled attribute in template
                     discountPercent: savedProduct ? savedProduct.discountPercent : 0
                 };
-            });
+            }) : [];
         } catch (err) {
             this.error = err.body?.message || 'Failed to load products';
             console.error('Error loading products:', err);
