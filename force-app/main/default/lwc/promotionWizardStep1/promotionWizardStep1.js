@@ -26,7 +26,7 @@ export default class PromotionWizardStep1 extends LightningElement {
         }
         
         // TODO FOR THE CHALLENGE: Update the promotion name in the state
-        this.promotionState.updatePromotionName(this.promotionName);
+        this.promotionState.value.updatePromotionName(this.promotionName);
         return true;
     }
 }
